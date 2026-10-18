@@ -1,0 +1,35 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.oneshoot.privacyshield'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'com.oneshoot.privacyshield'
+        minSdk 29
+        targetSdk 35
+        versionCode 3
+        versionName '1.2'
+    }
+
+    signingConfigs {
+        shadow {
+            storeFile file('shadow.keystore')
+            storePassword 'shadow123'
+            keyAlias 'shadow'
+            keyPassword 'shadow123'
+        }
+    }
+
+    buildTypes {
+        debug { signingConfig signingConfigs.shadow }
+        release { signingConfig signingConfigs.shadow }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
